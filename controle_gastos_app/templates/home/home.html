@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/css/home.css" rel="stylesheet" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8a0ec70a6e.js" crossorigin="anonymous"></script>
+    
+    <title>FinanSafe</title>
+</head>
+<body>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="POST" class="inputs">
+                {% csrf_token %}
+                <h1>Cadastrar transferência</h1>
+                <input type="text" name="titulo" placeholder="Título">
+                <input type="number" name="valor" placeholder="Valor">
+                <input type="text" name="categoria" placeholder="Categoria">
+                <div class="buttons-type">
+
+                    <button type="submit" id="btn-entrada" value="1">
+                        <i class="fa-solid fa-arrow-up" style="color: #157811;"></i>
+                        Entrada
+                    </button>
+                    
+                    <button type="submit" id="btn-saida" value="2">
+                        <i class="fa-solid fa-arrow-up" style="color: #F44336;"></i>
+                        Saida
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="conteudo">
+
+        <header>
+            <h1><span class="verde">Finan</span>Safe</h1>
+            <button id="modal-btn">Nova transação</button>
+        </header>
+
+        <section class="info">
+                <div class="model entradas">
+                    <div>
+                        <p>Entradas</p>
+                        <i class="fa-solid fa-arrow-up" style="color: #157811;"></i>
+                    </div>
+                    <p class="valor">R$<span>{{ valorTotalEntrada }}</span></p>
+                </div>
+
+                <div class="model saidas">
+                    <div>
+                        <p>Saidas</p>
+                        <i class="fa-solid fa-arrow-down" style="color: #F44336;"></i>
+                    </div>
+                    <p class="valor">-R$<span>{{ valorTotalSaida }}</span></p>
+                </div>
+
+                <div class="model bg-verde total">
+                    <div>
+                        <p>Total</p>
+                        <i class="fa-solid fa-coins" style="color: #ffffff;"></i>
+                    </div>
+                    <p class="valor">R$<span>{{ total }}</span></p>
+                </div>
+        </section>
+
+        <section class="historico">
+            <table class="table">
+                
+                <thead>
+                  <tr id="bg-preto">
+                    <th>Título</th>
+                    <th>Valor</th>
+                    <th>Categoria</th>
+                    <th>Data</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for transacao in transacoes %}
+                  <tr id="bg-escuro">
+                    <td>{{ transacao.titulo }}</td>
+                    {% if transacao.tipo == 1 %}
+                        <td class="texto-verde">+ {{ transacao.valor }}</td>
+                    {% else %}
+                        <td class="texto-vermelho">- {{ transacao.valor }}</td>
+                    {% endif %}
+                    
+                    <td>{{ transacao.categoria }}</td>
+                    <td>{{ transacao.data }}</td>
+                  </tr>
+                </tbody>
+                {% endfor %}
+              </table>
+        </section>
+    </div>
+    <script src="../../static/js/modal.js"></script>
+    <script src="../../static/js/buttons.js"></script>
+</body>
+</html>
