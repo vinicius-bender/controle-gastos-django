@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 
-from .models import Usuario
 from .models import Transacao
 from .models import Categoria
 
@@ -15,12 +14,19 @@ from .models import Categoria
 @login_required
 def home(request):
     data = {}
-    data['usuario'] = Usuario.objects.all()
-    data['transacoes'] = Transacao.objects.all()
+    data['transacoes'] = Transacao.objects.filter(iduser=request.user)
     data['categoria'] = Categoria.objects.all()
-    data['valorTotalEntrada'] = Transacao.objects.filter(tipo=1).aggregate(soma=Sum('valor'))['soma']
-    data['valorTotalSaida'] = Transacao.objects.filter(tipo=2).aggregate(soma=Sum('valor'))['soma']
+    
+    data['valorTotalEntrada'] = Transacao.objects.filter(iduser=request.user, tipo=1).aggregate(soma=Sum('valor'))['soma']
+    if (data['valorTotalEntrada'] is None):
+        data['valorTotalEntrada'] = 0
+
+    data['valorTotalSaida'] = Transacao.objects.filter(iduser=request.user, tipo=2).aggregate(soma=Sum('valor'))['soma']
+    if (data['valorTotalSaida'] is None):
+        data['valorTotalSaida'] = 0
+
     data['total'] = data['valorTotalEntrada'] - data['valorTotalSaida']
+    
     return render(request, 'home/home.html', data)
 
 
