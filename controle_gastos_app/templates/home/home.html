@@ -1,9 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../static/css/home.css" rel="stylesheet" >
+    <link href="{% static '/css/home.css' %}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,7 +14,16 @@
     <title>FinanSafe</title>
 </head>
 <body>
-
+    <div class="header">
+        {% if user.is_authenticated %}
+        <p>Bem vindo, {{ user }}!</p>
+        <a href="/accounts/logout">Sair</a>
+        {% else %}
+        <a href="/accounts/login">Entrar</a>
+        <a href="/accounts/logout">Sair</a>
+        {% endif %}
+        
+    </div>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -100,7 +111,7 @@
               </table>
         </section>
     </div>
-    <script src="../../static/js/modal.js"></script>
-    <script src="../../static/js/buttons.js"></script>
+    <script src="{% static '/js/modal.js' %}"></script>
+    <script src="{% static '/js/buttons.js' %}"></script>
 </body>
 </html>

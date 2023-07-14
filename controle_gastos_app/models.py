@@ -16,7 +16,7 @@ class Categoria(models.Model):
         return self.categoria
 
 class Transacao(models.Model):
-    idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    # idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     titulo = models.TextField(max_length=50)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     valor = models.DecimalField(max_digits=7, decimal_places=2)

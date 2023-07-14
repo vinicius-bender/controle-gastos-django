@@ -1,11 +1,18 @@
 from django.shortcuts import render
 from django.db.models import Sum
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+
 
 from .models import Usuario
 from .models import Transacao
 from .models import Categoria
 
+
 # Create your views here.
+@login_required
 def home(request):
     data = {}
     data['usuario'] = Usuario.objects.all()
@@ -15,13 +22,12 @@ def home(request):
     data['valorTotalSaida'] = Transacao.objects.filter(tipo=2).aggregate(soma=Sum('valor'))['soma']
     data['total'] = data['valorTotalEntrada'] - data['valorTotalSaida']
     return render(request, 'home/home.html', data)
-    
-
-# def valorTotalEntrada(request):
-#     soma_valores_entrada = Transacao.objects.filter(tipo=1).aggregate(soma=Sum('valor'))['soma']
-#     return render(request, 'home/home.html', {'soma_valores_entrada': soma_valores_entrada})
 
 
-# def valorTotalSaida(request):
-#     soma_valores_saida = Transacao.objects.filter(tipo=2).aggregate(soma=Sum('valor'))['soma']
-#     return render(request, 'home/home.html', {'soma_valores_saida': soma_valores_saida})
+class signup(generic.CreateView):
+    form_class = UserCreationForm
+    succes_url = reverse_lazy('login')
+    template_name = 'registration/register.html'
+
+    def get_success_url(self):
+        return reverse_lazy('login')
