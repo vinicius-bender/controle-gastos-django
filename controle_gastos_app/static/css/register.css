@@ -1,3 +1,7 @@
+.verde{
+    color: #157811;
+}
+
 .row{
     margin-top: 50px;
 }
@@ -5,4 +9,14 @@
 .change-form-p{
     margin-top: 20px;
     text-align: center;
+}
+
+.btn{
+    color: white;
+    background-color: #157811;
+}
+
+.btn:hover{
+    color: white;
+    background-color: #13a30e;
 }

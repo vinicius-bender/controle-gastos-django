@@ -5,6 +5,9 @@
     font-family: 'Inter', sans-serif;
     color: white;
 }
+form input{
+    color: black;
+}
 
 .header{
     width: 100%;

@@ -1,21 +1,16 @@
 let btnEntrada = document.getElementById("btn-entrada");
 let btnSaida = document.getElementById("btn-saida");
-let entradaSelected = false;
-let saidaSelected = false;
+let tipo = document.getElementById("tipo");
 
 btnEntrada.addEventListener("click", () => {
-
     btnEntrada.style.backgroundColor = "black";
     btnSaida.style.backgroundColor = "#363636";
-    entradaSelected = true;
-    saidaSelected = false;
-
+    tipo.value = 1;
+    
 });
 
 btnSaida.addEventListener("click", () => {
-
     btnSaida.style.backgroundColor = "black";
     btnEntrada.style.backgroundColor = "#363636";
-    entradaSelected = false;
-    saidaSelected = true;
+    tipo.value = 2;
 });

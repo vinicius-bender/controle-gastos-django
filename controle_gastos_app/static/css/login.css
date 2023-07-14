@@ -1,8 +1,28 @@
-.row{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.row {
     margin-top: 100px;
 }
 
-.change-form-p{
+.change-form-p {
     margin-top: 20px;
     text-align: center;
+}
+
+.verde{
+    color: #157811;
+}
+
+.btn{
+    color: white;
+    background-color: #157811;
+}
+
+.btn:hover{
+    color: white;
+    background-color: #13a30e;
 }

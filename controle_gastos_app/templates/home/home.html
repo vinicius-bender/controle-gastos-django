@@ -27,19 +27,20 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form method="POST" class="inputs">
+            <form method="POST" action="{% url 'cadastrar_transacao' %}" class="inputs">
                 {% csrf_token %}
                 <h1>Cadastrar transferência</h1>
                 <input type="text" name="titulo" placeholder="Título">
                 <input type="number" name="valor" placeholder="Valor">
                 <input type="text" name="categoria" placeholder="Categoria">
+                <!-- Adicione um campo oculto para enviar o tipo de transação -->
+                <input type="hidden" name="tipo" id="tipo" value="">
+            
                 <div class="buttons-type">
-
                     <div id="btn-entrada">
                         <i class="fa-solid fa-arrow-up" style="color: #157811;"></i>
                         Entrada
                     </div>
-                    
                     <div id="btn-saida">
                         <i class="fa-solid fa-arrow-up" style="color: #F44336;"></i>
                         Saida
@@ -49,7 +50,6 @@
             </form>
         </div>
     </div>
-
     <div class="conteudo">
 
         <header>
