@@ -2,7 +2,7 @@
 
 <h2> Descrição do Projeto </h2>
 <br>
-Aplicação Web simulando site de controle financeiro pessoal para aferir o conhecimento no framework Django.
+Aplicação Web de controle financeiro pessoal para aferir o conhecimento no framework Django.
 <br>
 
 ## :hammer: Funcionalidades do projeto 
