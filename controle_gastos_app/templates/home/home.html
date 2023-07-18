@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -5,25 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static '/css/home.css' %}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8a0ec70a6e.js" crossorigin="anonymous"></script>
     
-    <title>FinanSafe</title>
+    <title>{%block title%} MoneyTracker {% endblock %}</title>
 </head>
 <body>
-    <div class="header">
-        {% if user.is_authenticated %}
-        <p>Bem vindo, {{ user }}!</p>
-        <a href="/accounts/logout">Sair</a>
-        {% else %}
-        <a href="/accounts/login">Entrar</a>
-        <a href="/accounts/logout">Sair</a>
-        {% endif %}
-        
-    </div>
+
+    {% block content %}
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -42,7 +34,7 @@
                         Entrada
                     </div>
                     <div id="btn-saida">
-                        <i class="fa-solid fa-arrow-up" style="color: #F44336;"></i>
+                        <i class="fa-solid fa-arrow-down" style="color: #F44336;"></i>
                         Saida
                     </div>
                 </div>
@@ -114,5 +106,6 @@
     </div>
     <script src="{% static '/js/modal.js' %}"></script>
     <script src="{% static '/js/buttons.js' %}"></script>
+    {% endblock %}
 </body>
 </html>

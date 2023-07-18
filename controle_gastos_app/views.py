@@ -47,3 +47,7 @@ def cadastrar_transacao(request):
         transacao = Transacao(iduser=iduser, titulo=titulo, valor=valor, categoria=categoria, tipo=tipo)
         transacao.save()
     return redirect('/')
+
+
+def listagem (request):
+    return render(request, 'listagem/listagem.html')

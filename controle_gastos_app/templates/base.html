@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/css/home.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8a0ec70a6e.js" crossorigin="anonymous"></script>
+    
+    <title>{%block title%}{% endblock %}</title>
+</head>
+<body>
+    <div class="header">
+        {% if user.is_authenticated %}
+        <p>Bem vindo, {{ user }}!</p>
+        <div class="menu">
+            <a href="/">Início</a>
+            <a href="./listagem">Listagem</a>
+            <a href="/accounts/logout">Sair</a>
+        </div>
+        {% else %}
+        <a href="/accounts/login">Entrar</a>
+        <a href="/accounts/logout">Sair</a>
+        {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+    
+</body>
+</html>
