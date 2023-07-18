@@ -3,8 +3,12 @@
 <h2> Descrição do Projeto </h2>
 <br>
 Aplicação Web de controle financeiro pessoal para aferir o conhecimento no framework Django.
-<br>
+<br><br>
 
+
+https://github.com/vinicius-bender/controle-gastos-django/assets/79169359/5838fdc5-c847-4925-85ea-7544824298e8
+
+<br><br>
 ## :hammer: Funcionalidades do projeto 
 
 - `Registro e Login Autenticado`: Concluido ✔
