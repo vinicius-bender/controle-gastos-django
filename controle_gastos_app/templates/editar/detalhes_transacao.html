@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8a0ec70a6e.js" crossorigin="anonymous"></script>
+
+    <title>{%block title%} MoneyTracker {% endblock %}</title>
+</head>
+
+<body>
+
+    {% block content %}
+    <form method="POST" class="inputs">
+        {% csrf_token %}
+        <h1>Editar transacão</h1>
+        <input type="text" name="titulo" placeholder="Título" value="{{ detalhesTransacao.titulo }}">
+        <input type="number" name="valor" placeholder="Valor" value="{{ detalhesTransacao.valor }}">
+        <input type="text" name="categoria" placeholder="Categoria" value="{{ detalhesTransacao.categoria }}">
+        <!-- Adicione um campo oculto para enviar o tipo de transação -->
+        <input type="hidden" name="tipo" id="tipo" value="{{ detalhesTransacao.tipo }}">
+
+        <div class="buttons-type">
+            <div id="btn-entrada">
+                <i class="fa-solid fa-arrow-up" style="color: #157811;"></i>
+                Entrada
+            </div>
+            <div id="btn-saida">
+                <i class="fa-solid fa-arrow-down" style="color: #F44336;"></i>
+                Saida
+            </div>
+        </div>
+        <input id="finaliza" type="submit" name="enviar" value="Editar">
+    </form>
+    <script src="{% static '/js/modal.js' %}"></script>
+    <script src="{% static '/js/buttons.js' %}"></script>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -48,6 +48,22 @@ def cadastrar_transacao(request):
         transacao.save()
     return redirect('/')
 
+def remover_transacao(request, id):
+    transacao = get_object_or_404(Transacao, pk=id)
+    transacao.delete()
+    return redirect('/')
+
+def detalhes_transacao (request, id):
+    detalhesTransacao = get_object_or_404(Transacao, pk=id)
+    if request.method == 'POST':
+        detalhesTransacao.titulo = request.POST['titulo']
+        detalhesTransacao.valor = request.POST['valor']
+        detalhesTransacao.categoria = request.POST['categoria']
+        detalhesTransacao.tipo= request.POST['tipo']
+        detalhesTransacao.save()
+        return redirect('/')
+    else:
+        return render(request, 'editar/detalhes_transacao.html', {'detalhesTransacao': detalhesTransacao})
 
 def listagem (request):
     return render(request, 'listagem/listagem.html')

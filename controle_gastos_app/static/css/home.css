@@ -211,6 +211,20 @@ button:hover{
     cursor: pointer;
   }
 
+  .closeEdit {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closeEdit:hover,
+  .closeEdit:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   .inputs{
     display: flex;
     flex-direction: column;

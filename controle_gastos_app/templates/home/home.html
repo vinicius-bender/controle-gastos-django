@@ -16,6 +16,7 @@
 <body>
 
     {% block content %}
+    <!--Insert Modal-->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -42,8 +43,8 @@
             </form>
         </div>
     </div>
-    <div class="conteudo">
 
+    <div class="conteudo">
         <header>
             <h1><span class="verde">Money</span>Tracker</h1>
             <button id="modal-btn">Nova transação</button>
@@ -84,6 +85,7 @@
                     <th>Valor</th>
                     <th>Categoria</th>
                     <th>Data</th>
+                    <th colspan="2">Editar/Excluir</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -98,6 +100,8 @@
                     
                     <td>{{ transacao.categoria }}</td>
                     <td>{{ transacao.data }}</td>
+                    <td><a href="detalhes_transacao/{{transacao.id}}" id="editModal-btn"><i class="fa-solid fa-pen-to-square" style="color: #005eff;"></i></a></td>
+                    <td><a href="remover_transacao/{{transacao.id}}"><i class="fa-solid fa-trash" style="color:  #dc3545;"></i></a></td>
                   </tr>
                 </tbody>
                 {% endfor %}
