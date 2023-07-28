@@ -13,7 +13,7 @@ https://github.com/vinicius-bender/controle-gastos-django/assets/79169359/5838fd
 
 - `Registro e Login Autenticado`: Concluido ✔
 - `Cadastro de entradas e saídas de dinheiro`: Concluido ✔
-- `Edição e remoção das entradas e saídas cadastradas`: Em andamento 🚧
+- `Edição e remoção das entradas e saídas cadastradas`: Concluido ✔
 
 ## 📁 Acesso ao projeto 
 
