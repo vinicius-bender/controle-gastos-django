@@ -89,7 +89,6 @@ WSGI_APPLICATION = 'controle_gastos_projeto.wsgi.application'
 # }
 DATABASE_URL = "postgres://controle_gastosdb_user:pnHNok4BSgp2F9Y0oqMH8AVtl3RMW2Ds@dpg-cj2vc4h8g3n1jkh59lkg-a.oregon-postgres.render.com/controle_gastosdb"
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -111,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-
+SECRET_KEY = 'django-insecure-=op7f8+@o#zjf%9m%_ge&_r^!4t$ndkx00n$v2jeuaycn=veq6'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
